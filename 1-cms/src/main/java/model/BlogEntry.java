@@ -43,8 +43,7 @@ public class BlogEntry extends PanacheEntity {
     }
 
     public static List<BlogEntry> listAllSortedByPublished() {
-        // TODO : return all entries sorted by published date descending
-        return List.of();
+       return BlogEntry.listAll(Sort.by("published").descending()); 
     }
 
     public static Optional<BlogEntry> getByTitle(String title) {

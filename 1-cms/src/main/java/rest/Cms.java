@@ -46,7 +46,11 @@ public class Cms extends Controller {
     }
 
     public TemplateInstance editBlogEntry(@RestPath Long id) {
-        BlogEntry blogEntry = new BlogEntry(); // TODO: find the blog entry, return an error if null
+        // Find the blog entry
+        BlogEntry blogEntry = BlogEntry.findById(id);
+        // Fail if null
+        notFoundIfNull(blogEntry);
+        // Show the index with the given entry in the editor
         return Templates.index(BlogEntry.listAllSortedByPublished(), blogEntry);
     }
 
